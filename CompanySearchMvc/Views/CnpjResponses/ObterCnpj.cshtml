@@ -37,14 +37,14 @@
     <input type="hidden" asp-for="SituacaoEspecial" />
     <input type="hidden" asp-for="DataSituacaoEspecial" />
     <input type="hidden" asp-for="CapitalSocial" />
-    <input type="hidden" asp-for="AtividadePrincipal" />
-    <input type="hidden" asp-for="AtividadeSecundaria" />
+@*     <input type="hidden" asp-for="AtividadePrincipal" />
+    <input type="hidden" asp-for="AtividadeSecundaria" /> *@
     <input type="hidden" asp-for="NaturezaJuridica" />
-    <input type="hidden" asp-for="Qsa" />
-    <input type="hidden" asp-for="Simples" />
-    <input type="hidden" asp-for="Simei" />
-    <input type="hidden" asp-for="Billing" />
-
+@*     <input type="hidden" name="Qsa" value="@Json.Serialize(Model.Qsa)" />
+    <input type="hidden" name="Simples" value="@Json.Serialize(Model.Simples)" />
+    <input type="hidden" name="Simei" value="@Json.Serialize(Model.Simei)" />
+    <input type="hidden" name="Billing" value="@Json.Serialize(Model.Billing)" /> *@
+        
     <div class="form-group">
         <label asp-for="Nome" class="control-label"></label>
         <input asp-for="Nome" class="form-control" readonly />
@@ -54,7 +54,7 @@
         <input asp-for="Fantasia" class="form-control" readonly />
     </div>
     <div class="form-group">
-        <label asp-for="Cnpj" class="control-label"></label>
+        <label asp-for="Cnpj" class="control-label">CNPJ</label>
         <input asp-for="Cnpj" class="form-control" readonly />
     </div>
     <div class="form-group">
@@ -120,13 +120,13 @@ else
             SituacaoEspecial: $("input[name='SituacaoEspecial']").val(),
             DataSituacaoEspecial: $("input[name='DataSituacaoEspecial']").val(),
             CapitalSocial: $("input[name='CapitalSocial']").val(),
-            AtividadePrincipal: $("input[name='AtividadePrincipal']").val(),
-            AtividadeSecundaria: $("input[name='AtividadeSecundaria']").val(),
+            // AtividadePrincipal: $("input[name='AtividadePrincipal']").val(),
+            // AtividadeSecundaria: $("input[name='AtividadeSecundaria']").val(),
             NaturezaJuridica: $("input[name='NaturezaJuridica']").val(),
-            Qsa: $("input[name='Qsa']").val(),
-            Simples: $("input[name='Simples']").val(),
-            Simei: $("input[name='Simei']").val(),
-            Billing: $("input[name='Billing']").val()
+            // Qsa: $("input[name='Qsa']").val(),
+            // Simples: $("input[name='Simples']").val(),
+            // Simei: $("input[name='Simei']").val(),
+            // Billing: $("input[name='Billing']").val()
             };
 
             // Envio p api

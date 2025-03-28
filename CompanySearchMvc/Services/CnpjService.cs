@@ -32,11 +32,88 @@ namespace BuscaCnpjMvc.Services
 
         public async Task<CnpjResponse> SalvarCnpjAsync(CnpjResponse cnpjResponse)
         {
-
+            //cnpjResponse.Qsa = PreencherQsaPadrao(cnpjResponse.Qsa);
+            //cnpjResponse.Simples = PreencherSimplesPadrao(cnpjResponse.Simples);
+            //cnpjResponse.Simei = PreencherSimeiPadrao(cnpjResponse.Simei);
+            //cnpjResponse.Billing = PreencherBillingPadrao(cnpjResponse.Billing);
             _context.Add(cnpjResponse);
             await _context.SaveChangesAsync();
             return cnpjResponse;
 
         }
+
+        //private List<Qsa> PreencherQsaPadrao(List<Qsa> qsa)
+        //{
+
+        //    foreach (var item in qsa)
+        //    {
+        //        if (item.Nome == null)
+        //        {
+        //            item.Nome = "Não Informado";
+        //        }
+
+        //        if (item.Qual == null)
+        //        {
+        //            item.Qual = "Não Informado";
+        //        }
+
+        //        if (item.PaisOrigem == null)
+        //        {
+        //            item.PaisOrigem = "Não Informado";
+        //        }
+        //        if(item.NomeRepLegal == null)
+        //        {
+        //            item.NomeRepLegal = "Não Informado";
+        //        }
+        //        if(item.QualRepLegal == null)
+        //        {
+        //            item.QualRepLegal = "Não Informado";
+        //        }
+        //    }
+        //    return qsa;
+        //}
+
+        //private Simples PreencherSimplesPadrao(Simples simples)
+        //{
+        //    if (simples.Optante == null)
+        //    {
+        //        simples.Optante = false;
+        //    }
+
+        //    if (simples.DataOpcao == null)
+        //    {
+        //        simples.DataOpcao = DateTime.MinValue;
+        //    }
+        //    return simples;
+        //}
+
+        //private Simei PreencherSimeiPadrao(Simei simei)
+        //{
+        //    if (simei.Optante == null)
+        //    {
+        //        simei.Optante = false;
+        //    }
+
+        //    if (simei.DataOpcao == null)
+        //    {
+        //        simei.DataOpcao = DateTime.MinValue;
+        //    }
+        //    return simei;
+        //}
+
+        //private Billing PreencherBillingPadrao(Billing billing)
+        //{
+
+        //    if (billing.Optante == null)
+        //    {
+        //        billing.Optante = false;
+        //    }
+
+        //    if (billing.Database == null)
+        //    {
+        //        billing.Database = false;
+        //    }
+        //    return billing;
+        //}
     }
 }
