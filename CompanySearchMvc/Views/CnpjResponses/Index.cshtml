@@ -9,131 +9,134 @@
 <p>
     <a asp-action="ObterCnpj" class="btn btn-primary">Buscar Novamente</a>
 </p>
-<table class="table table-bordered table-striped table-hover"> 
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Cnpj)
-            </th>
-            <th style="min-width: 200px;">
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fantasia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th style="min-width: 250px;">
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th style="min-width: 250px;">
-                @Html.DisplayNameFor(model => model.Logradouro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Numero)
-            </th>
-            <th style="min-width: 250px;">
-                @Html.DisplayNameFor(model => model.Complemento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cep)
-            </th>
-            <th style="min-width: 200;">
-                @Html.DisplayNameFor(model => model.Bairro)
-            </th>
 
-            <th style="min-width: 200;">
-                @Html.DisplayNameFor(model => model.Municipio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Uf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Porte)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Abertura)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NaturezaJuridica)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Situacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CapitalSocial)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cnpj)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Fantasia)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Logradouro)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Numero)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Complemento)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Cep)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Bairro)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Municipio)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Uf)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Porte)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Abertura)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.NaturezaJuridica)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Situacao)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.CapitalSocial)
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-striped table-hover"> 
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cnpj)
+                </th>
+                <th style="min-width: 200px;">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fantasia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th style="min-width: 250px;">
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th style="min-width: 250px;">
+                    @Html.DisplayNameFor(model => model.Logradouro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numero)
+                </th>
+                <th style="min-width: 250px;">
+                    @Html.DisplayNameFor(model => model.Complemento)
+                </th>
+                <th style="min-width: 150px;">
+                    @Html.DisplayNameFor(model => model.Cep)
+                </th>
+                <th style="min-width: 200px;">
+                    @Html.DisplayNameFor(model => model.Bairro)
+                </th>
+
+                <th style="min-width: 200px;">
+                    @Html.DisplayNameFor(model => model.Municipio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Uf)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Porte)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Abertura)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NaturezaJuridica)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Situacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CapitalSocial)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cnpj)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Fantasia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Logradouro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Numero)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Complemento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Cep)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Bairro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Municipio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Uf)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Porte)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Abertura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.NaturezaJuridica)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Situacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.CapitalSocial)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
