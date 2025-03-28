@@ -9,7 +9,7 @@
 <form asp-action="ObterCnpj" method="get">
     <div class="form-group">
         <label asp-for="Cnpj" class="control-label">CNPJ</label>
-        <input asp-for="Cnpj" class="form-control" id="cnpjInput"/>
+        <input asp-for="Cnpj" class="form-control"/>
         <span asp-validation-for="Cnpj" class="text-danger"></span>
     </div>
     <p></p>
@@ -100,7 +100,7 @@ else
             event.preventDefault();
 
             var cnpjData = {
-            Cnpj: cleanCnpj($("input[name='Cnpj']").val()),
+            Cnpj: $("input[name='Cnpj']").val(),
             Nome: $("input[name='Nome']").val(),
             Fantasia: $("input[name='Fantasia']").val(),
             Situacao: $("input[name='Situacao']").val(),
@@ -120,13 +120,13 @@ else
             SituacaoEspecial: $("input[name='SituacaoEspecial']").val(),
             DataSituacaoEspecial: $("input[name='DataSituacaoEspecial']").val(),
             CapitalSocial: $("input[name='CapitalSocial']").val(),
-            AtividadePrincipal: $("input[name='AtividadePrincipal']").val(),
-            AtividadeSecundaria: $("input[name='AtividadeSecundaria']").val(),
+            // AtividadePrincipal: $("input[name='AtividadePrincipal']").val(),
+            // AtividadeSecundaria: $("input[name='AtividadeSecundaria']").val(),
             NaturezaJuridica: $("input[name='NaturezaJuridica']").val(),
-            Qsa: $("input[name='Qsa']").val(),
-            Simples: $("input[name='Simples']").val(),
-            Simei: $("input[name='Simei']").val(),
-            Billing: $("input[name='Billing']").val()
+            // Qsa: $("input[name='Qsa']").val(),
+            // Simples: $("input[name='Simples']").val(),
+            // Simei: $("input[name='Simei']").val(),
+            // Billing: $("input[name='Billing']").val()
             };
 
             // Envio p api
