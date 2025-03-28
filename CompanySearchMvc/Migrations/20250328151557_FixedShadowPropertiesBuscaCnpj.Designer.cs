@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BuscaCnpjMvc.Migrations
 {
     [DbContext(typeof(BuscaCnpjMvcContext))]
-    [Migration("20250327204521_CamposOpcionais")]
-    partial class CamposOpcionais
+    [Migration("20250328151557_FixedShadowPropertiesBuscaCnpj")]
+    partial class FixedShadowPropertiesBuscaCnpj
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -111,56 +111,110 @@ namespace BuscaCnpjMvc.Migrations
                 {
                     b.OwnsMany("BuscaCnpjMvc.Models.AtividadePrincipal", "AtividadePrincipal", b1 =>
                         {
-                            b1.Property<string>("CnpjResponseCnpj")
-                                .HasColumnType("varchar(255)");
-
-                            b1.Property<int>("Id")
+                            b1.Property<int>("Sequencial")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
-                            MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b1.Property<int>("Id"));
+                            MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b1.Property<int>("Sequencial"));
+
+                            b1.Property<string>("Cnpj")
+                                .HasColumnType("varchar(255)");
 
                             b1.Property<string>("Code")
-                                .IsRequired()
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("Codigo")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("Descricao")
                                 .HasColumnType("longtext");
 
                             b1.Property<string>("Text")
-                                .IsRequired()
                                 .HasColumnType("longtext");
 
-                            b1.HasKey("CnpjResponseCnpj", "Id");
+                            b1.HasKey("Sequencial");
 
-                            b1.ToTable("AtividadePrincipal");
+                            b1.HasIndex("Cnpj");
+
+                            b1.ToTable("AtividadePrincipal", (string)null);
 
                             b1.WithOwner()
-                                .HasForeignKey("CnpjResponseCnpj");
+                                .HasForeignKey("Cnpj");
                         });
 
                     b.OwnsMany("BuscaCnpjMvc.Models.AtividadeSecundaria", "AtividadeSecundaria", b1 =>
                         {
-                            b1.Property<string>("CnpjResponseCnpj")
-                                .HasColumnType("varchar(255)");
-
-                            b1.Property<int>("Id")
+                            b1.Property<int>("Sequencial")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
-                            MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b1.Property<int>("Id"));
+                            MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b1.Property<int>("Sequencial"));
+
+                            b1.Property<string>("Cnpj")
+                                .HasColumnType("varchar(255)");
 
                             b1.Property<string>("Code")
-                                .IsRequired()
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("Codigo")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("Descricao")
                                 .HasColumnType("longtext");
 
                             b1.Property<string>("Text")
-                                .IsRequired()
                                 .HasColumnType("longtext");
 
-                            b1.HasKey("CnpjResponseCnpj", "Id");
+                            b1.HasKey("Sequencial");
 
-                            b1.ToTable("AtividadeSecundaria");
+                            b1.HasIndex("Cnpj");
+
+                            b1.ToTable("AtividadeSecundaria", (string)null);
 
                             b1.WithOwner()
-                                .HasForeignKey("CnpjResponseCnpj");
+                                .HasForeignKey("Cnpj");
+                        });
+
+                    b.OwnsMany("BuscaCnpjMvc.Models.Qsa", "Qsa", b1 =>
+                        {
+                            b1.Property<int>("Sequencial")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
+
+                            MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b1.Property<int>("Sequencial"));
+
+                            b1.Property<string>("Cnpj")
+                                .HasColumnType("varchar(255)");
+
+                            b1.Property<string>("Nome")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("NomeRepLegal")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("PaisOrigem")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("Qual")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("QualRepLegal")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("Qualificacao")
+                                .HasColumnType("longtext");
+
+                            b1.Property<string>("RepresentanteLegal")
+                                .HasColumnType("longtext");
+
+                            b1.HasKey("Sequencial");
+
+                            b1.HasIndex("Cnpj");
+
+                            b1.ToTable("Qsa", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("Cnpj");
                         });
 
                     b.OwnsOne("BuscaCnpjMvc.Models.Billing", "Billing", b1 =>
@@ -168,10 +222,15 @@ namespace BuscaCnpjMvc.Migrations
                             b1.Property<string>("CnpjResponseCnpj")
                                 .HasColumnType("varchar(255)");
 
-                            b1.Property<bool>("Database")
+                            b1.Property<bool?>("Database")
                                 .HasColumnType("tinyint(1)");
 
-                            b1.Property<bool>("Optante")
+                            b1.Property<bool>("IsEmpty")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("tinyint(1)")
+                                .HasDefaultValue(true);
+
+                            b1.Property<bool?>("Optante")
                                 .HasColumnType("tinyint(1)");
 
                             b1.HasKey("CnpjResponseCnpj");
@@ -182,60 +241,26 @@ namespace BuscaCnpjMvc.Migrations
                                 .HasForeignKey("CnpjResponseCnpj");
                         });
 
-                    b.OwnsMany("BuscaCnpjMvc.Models.Qsa", "Qsa", b1 =>
-                        {
-                            b1.Property<string>("CnpjResponseCnpj")
-                                .HasColumnType("varchar(255)");
-
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
-
-                            MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b1.Property<int>("Id"));
-
-                            b1.Property<string>("Nome")
-                                .IsRequired()
-                                .HasColumnType("longtext");
-
-                            b1.Property<string>("NomeRepLegal")
-                                .IsRequired()
-                                .HasColumnType("longtext");
-
-                            b1.Property<string>("PaisOrigem")
-                                .IsRequired()
-                                .HasColumnType("longtext");
-
-                            b1.Property<string>("Qual")
-                                .IsRequired()
-                                .HasColumnType("longtext");
-
-                            b1.Property<string>("QualRepLegal")
-                                .IsRequired()
-                                .HasColumnType("longtext");
-
-                            b1.HasKey("CnpjResponseCnpj", "Id");
-
-                            b1.ToTable("Qsa");
-
-                            b1.WithOwner()
-                                .HasForeignKey("CnpjResponseCnpj");
-                        });
-
                     b.OwnsOne("BuscaCnpjMvc.Models.Simei", "Simei", b1 =>
                         {
                             b1.Property<string>("CnpjResponseCnpj")
                                 .HasColumnType("varchar(255)");
 
-                            b1.Property<DateTime>("DataExclusao")
+                            b1.Property<DateTime?>("DataExclusao")
                                 .HasColumnType("datetime(6)");
 
-                            b1.Property<DateTime>("DataOpcao")
+                            b1.Property<DateTime?>("DataOpcao")
                                 .HasColumnType("datetime(6)");
 
-                            b1.Property<bool>("Optante")
+                            b1.Property<bool>("IsEmpty")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("tinyint(1)")
+                                .HasDefaultValue(true);
+
+                            b1.Property<bool?>("Optante")
                                 .HasColumnType("tinyint(1)");
 
-                            b1.Property<DateTime>("UltimaAtualizacao")
+                            b1.Property<DateTime?>("UltimaAtualizacao")
                                 .HasColumnType("datetime(6)");
 
                             b1.HasKey("CnpjResponseCnpj");
@@ -251,16 +276,21 @@ namespace BuscaCnpjMvc.Migrations
                             b1.Property<string>("CnpjResponseCnpj")
                                 .HasColumnType("varchar(255)");
 
-                            b1.Property<DateTime>("DataExclusao")
+                            b1.Property<DateTime?>("DataExclusao")
                                 .HasColumnType("datetime(6)");
 
-                            b1.Property<DateTime>("DataOpcao")
+                            b1.Property<DateTime?>("DataOpcao")
                                 .HasColumnType("datetime(6)");
 
-                            b1.Property<bool>("Optante")
+                            b1.Property<bool>("IsEmpty")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("tinyint(1)")
+                                .HasDefaultValue(true);
+
+                            b1.Property<bool?>("Optante")
                                 .HasColumnType("tinyint(1)");
 
-                            b1.Property<DateTime>("UltimaAtualizacao")
+                            b1.Property<DateTime?>("UltimaAtualizacao")
                                 .HasColumnType("datetime(6)");
 
                             b1.HasKey("CnpjResponseCnpj");

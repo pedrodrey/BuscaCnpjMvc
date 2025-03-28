@@ -37,10 +37,10 @@
     <input type="hidden" asp-for="SituacaoEspecial" />
     <input type="hidden" asp-for="DataSituacaoEspecial" />
     <input type="hidden" asp-for="CapitalSocial" />
-@*     <input type="hidden" asp-for="AtividadePrincipal" />
+   @*<input type="hidden" asp-for="AtividadePrincipal" />
     <input type="hidden" asp-for="AtividadeSecundaria" /> *@
     <input type="hidden" asp-for="NaturezaJuridica" />
-@*     <input type="hidden" name="Qsa" value="@Json.Serialize(Model.Qsa)" />
+   @*<input type="hidden" name="Qsa" value="@Json.Serialize(Model.Qsa)" />
     <input type="hidden" name="Simples" value="@Json.Serialize(Model.Simples)" />
     <input type="hidden" name="Simei" value="@Json.Serialize(Model.Simei)" />
     <input type="hidden" name="Billing" value="@Json.Serialize(Model.Billing)" /> *@
@@ -120,13 +120,13 @@ else
             SituacaoEspecial: $("input[name='SituacaoEspecial']").val(),
             DataSituacaoEspecial: $("input[name='DataSituacaoEspecial']").val(),
             CapitalSocial: $("input[name='CapitalSocial']").val(),
-            // AtividadePrincipal: $("input[name='AtividadePrincipal']").val(),
-            // AtividadeSecundaria: $("input[name='AtividadeSecundaria']").val(),
+            AtividadePrincipal: $("input[name='AtividadePrincipal']").val(),
+            AtividadeSecundaria: $("input[name='AtividadeSecundaria']").val(),
             NaturezaJuridica: $("input[name='NaturezaJuridica']").val(),
-            // Qsa: $("input[name='Qsa']").val(),
-            // Simples: $("input[name='Simples']").val(),
-            // Simei: $("input[name='Simei']").val(),
-            // Billing: $("input[name='Billing']").val()
+            Qsa: $("input[name='Qsa']").val(),
+            Simples: $("input[name='Simples']").val(),
+            Simei: $("input[name='Simei']").val(),
+            Billing: $("input[name='Billing']").val()
             };
 
             // Envio p api
