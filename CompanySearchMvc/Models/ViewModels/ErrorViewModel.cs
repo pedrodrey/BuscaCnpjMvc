@@ -1,4 +1,4 @@
-namespace CompanySearchMvc.Models
+namespace BuscaCnpjMvc.Models.ViewModels
 {
     public class ErrorViewModel
     {

@@ -3,6 +3,17 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bem-Vindo</h1>
+    <h4>Busque empresas pelo CNPJ e armazene em seu banco de dados.</h4>
+    <p></p>
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="CnpjResponses" asp-action="ObterCnpj">Buscar CNPJ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="CnpjResponses" asp-action="Index">CNPJ's Cadastrados</a>
+            </li>
+        </ul>
+    </div>
 </div>

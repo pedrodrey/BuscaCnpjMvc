@@ -1,0 +1,149 @@
+﻿@model BuscaCnpjMvc.Models.CnpjResponse
+
+@{
+    ViewData["Title"] = "Buscar CNPJ";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="ObterCnpj" method="get">
+    <div class="form-group">
+        <label asp-for="Cnpj" class="control-label">CNPJ</label>
+        <input asp-for="Cnpj" class="form-control"/>
+        <span asp-validation-for="Cnpj" class="text-danger"></span>
+    </div>
+    <p></p>
+    <div class="form-group">
+        <input type="submit" value="Buscar CNPJ" class="btn btn-primary" />
+    </div>
+</form>
+
+<hr />
+
+@if (Model != null && !string.IsNullOrWhiteSpace(Model.Nome))
+{
+<h4>Dados da Empresa</h4>
+
+<form id="formSalvarCnpj" asp-action="SalvarCnpj" method="post">
+    <input type="hidden" asp-for="Numero" />
+    <input type="hidden" asp-for="Complemento" />
+    <input type="hidden" asp-for="Cep" />
+    <input type="hidden" asp-for="Bairro" />
+    <input type="hidden" asp-for="Email" />
+    <input type="hidden" asp-for="Telefone" />
+    <input type="hidden" asp-for="Efr" />
+    <input type="hidden" asp-for="DataSituacao" />
+    <input type="hidden" asp-for="MotivoSituacao" />
+    <input type="hidden" asp-for="SituacaoEspecial" />
+    <input type="hidden" asp-for="DataSituacaoEspecial" />
+    <input type="hidden" asp-for="CapitalSocial" />
+    <input type="hidden" asp-for="AtividadePrincipal" />
+    <input type="hidden" asp-for="AtividadeSecundaria" />
+    <input type="hidden" asp-for="NaturezaJuridica" />
+    <input type="hidden" asp-for="Qsa" />
+    <input type="hidden" asp-for="Simples" />
+    <input type="hidden" asp-for="Simei" />
+    <input type="hidden" asp-for="Billing" />
+
+    <div class="form-group">
+        <label asp-for="Nome" class="control-label"></label>
+        <input asp-for="Nome" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Fantasia" class="control-label"></label>
+        <input asp-for="Fantasia" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Cnpj" class="control-label"></label>
+        <input asp-for="Cnpj" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Situacao" class="control-label"></label>
+        <input asp-for="Situacao" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Porte" class="control-label"></label>
+        <input asp-for="Porte" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Logradouro" class="control-label"></label>
+        <input asp-for="Logradouro" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Municipio" class="control-label"></label>
+        <input asp-for="Municipio" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Uf" class="control-label"></label>
+        <input asp-for="Uf" class="form-control" readonly />
+    </div>
+
+    <p></p>
+    <div class="form-group">
+        <input type="submit" value="Salvar CNPJ" class="btn btn-success" />
+    </div>
+</form>
+}
+else
+{
+    <p>Digite um CNPJ válido para buscar os dados.</p>
+}
+<p></p>
+<div>
+    <a asp-action="Index" class="btn btn-danger">Voltar à Lista</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#formSalvarCnpj").submit(function(event) {
+            event.preventDefault();
+
+            var cnpjData = {
+            Cnpj: $("input[name='Cnpj']").val(),
+            Nome: $("input[name='Nome']").val(),
+            Fantasia: $("input[name='Fantasia']").val(),
+            Situacao: $("input[name='Situacao']").val(),
+            Porte: $("input[name='Porte']").val(),
+            Logradouro: $("input[name='Logradouro']").val(),
+            Numero: $("input[name='Numero']").val(),
+            Complemento: $("input[name='Complemento']").val(),
+            Cep: $("input[name='Cep']").val(),
+            Bairro: $("input[name='Bairro']").val(),
+            Municipio: $("input[name='Municipio']").val(),
+            Uf: $("input[name='Uf']").val(),
+            Email: $("input[name='Email']").val(),
+            Telefone: $("input[name='Telefone']").val(),
+            Efr: $("input[name='Efr']").val(),
+            DataSituacao: $("input[name='DataSituacao']").val(),
+            MotivoSituacao: $("input[name='MotivoSituacao']").val(),
+            SituacaoEspecial: $("input[name='SituacaoEspecial']").val(),
+            DataSituacaoEspecial: $("input[name='DataSituacaoEspecial']").val(),
+            CapitalSocial: $("input[name='CapitalSocial']").val(),
+            AtividadePrincipal: $("input[name='AtividadePrincipal']").val(),
+            AtividadeSecundaria: $("input[name='AtividadeSecundaria']").val(),
+            NaturezaJuridica: $("input[name='NaturezaJuridica']").val(),
+            Qsa: $("input[name='Qsa']").val(),
+            Simples: $("input[name='Simples']").val(),
+            Simei: $("input[name='Simei']").val(),
+            Billing: $("input[name='Billing']").val()
+            };
+
+            // Envio p api
+            $.ajax({
+                url: '/api/CnpjResponses/SalvarCnpj',
+                type: 'POST',
+                data: JSON.stringify(cnpjData),
+                contentType: 'application/json',
+                success: function(response) {
+                    alert('CNPJ salvo com sucesso!');
+                    window.location.href = '/api/CnpjResponses/';
+                },
+                error: function(xhr, status, error) {
+                    alert('Erro ao salvar o CNPJ: ' + error);
+                }
+            });
+        });
+    });
+</script>
+
