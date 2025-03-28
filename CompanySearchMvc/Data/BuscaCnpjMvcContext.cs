@@ -16,13 +16,11 @@ namespace BuscaCnpjMvc.Data
         {
             modelBuilder.Entity<CnpjResponse>(entity =>
             {
-                // Configuração para Qsa (lista owned)
                 entity.OwnsMany(
                     e => e.Qsa,
                     qsa =>
                     {
                         qsa.ToTable("Qsa");
-                        // Correção crucial: especificar o tipo da shadow property
                         qsa.Property<int>("Sequencial").ValueGeneratedOnAdd();
                         qsa.HasKey("Sequencial");
                         qsa.WithOwner().HasForeignKey("Cnpj");
@@ -34,7 +32,6 @@ namespace BuscaCnpjMvc.Data
                     }
                 );
 
-                // Configuração para AtividadePrincipal
                 entity.OwnsMany(
                     e => e.AtividadePrincipal,
                     atv =>
@@ -50,7 +47,6 @@ namespace BuscaCnpjMvc.Data
                     }
                 );
 
-                // Configuração para AtividadeSecundaria
                 entity.OwnsMany(
                     e => e.AtividadeSecundaria,
                     atv =>
@@ -66,7 +62,6 @@ namespace BuscaCnpjMvc.Data
                     }
                 );
 
-                // Configuração simplificada para objetos owned
                 entity.OwnsOne(e => e.Simples, s => {
                     s.Property<bool>("IsEmpty").IsRequired().HasDefaultValue(true);
                     s.WithOwner();
