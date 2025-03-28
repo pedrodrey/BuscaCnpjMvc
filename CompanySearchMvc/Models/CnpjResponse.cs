@@ -11,7 +11,7 @@ namespace BuscaCnpjMvc.Models
         public DateTime? UltimaAtualizacao { get; set; }
 
         [Key]
-        [Required]
+        [Required(ErrorMessage = "CNPJ é obrigatório")]
         public string Cnpj { get; set; }
 
         public string? Tipo { get; set; }
