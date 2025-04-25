@@ -22,7 +22,7 @@ O **BuscaCNPJ MVC** é um sistema web desenvolvido em ASP.NET MVC que permite co
   
 - **Frontend**:
   - Bootstrap (para estilização)
-  - jQuery (para requisições AJAX)
+  - JavaScript (JQuery)
   
 - **Integração**:
   - Refit (para consumo da API ReceitaWS)
